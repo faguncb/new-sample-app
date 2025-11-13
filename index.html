@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Core Sample App</title>
+    <script type="module" src="/src/main.ts"></script>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        button { margin: 5px; padding: 10px; }
+        #log { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; }
+        select, input { margin: 5px; padding: 5px; }
+    </style>
+</head>
+<body>
+<h1>Nexus Core Sample App</h1>
+<div id="wallet-section">
+    <button id="connect-btn">Connect Wallet</button>
+    <p id="account-info"></p>
+    <select id="network-select">
+        <option value="mainnet">Mainnet</option>
+        <option value="testnet">Testnet</option>
+    </select>
+</div>
+<div id="features">
+    <h2>Balances</h2>
+    <button id="get-balances">Get Unified Balances</button>
+    <button id="get-usdc-balance">Get USDC Balance</button>
+    <p id="balances-output"></p>
+
+    <h2>Bridge</h2>
+    <input id="bridge-amount" type="number" placeholder="Amount (e.g., 100)" value="100">
+    <select id="bridge-chain">
+        <option value="137">Polygon (137)</option>
+        <option value="42161">Arbitrum (42161)</option>
+    </select>
+    <button id="bridge-btn">Bridge USDC</button>
+    <button id="simulate-bridge">Simulate Bridge</button>
+    <p id="bridge-output"></p>
+
+    <h2>Transfer</h2>
+    <input id="transfer-recipient" placeholder="0x..." value="0x742d35Cc6634C0532925a3b8D4C9db96c4b4Db45">
+    <input id="transfer-amount" type="number" placeholder="Amount" value="100">
+    <select id="transfer-chain">
+        <option value="42161">Arbitrum (42161)</option>
+    </select>
+    <button id="transfer-btn">Transfer USDC</button>
+    <button id="simulate-transfer">Simulate Transfer</button>
+    <p id="transfer-output"></p>
+
+    <h2>Execute</h2>
+    <button id="execute-btn">Execute Sample Supply</button>
+    <button id="simulate-execute">Simulate Execute</button>
+    <button id="bridge-execute-btn">Bridge & Execute</button>
+    <button id="simulate-bridge-execute">Simulate Bridge & Execute</button>
+    <p id="execute-output"></p>
+
+    <h2>Swap</h2>
+    <select id="swap-from-chain">
+        <option value="8453">Base (8453)</option>
+    </select>
+    <input id="swap-from-amount" type="number" placeholder="From Amount" value="100">
+    <select id="swap-to-chain">
+        <option value="10">Optimism (10)</option>
+    </select>
+    <select id="swap-token">
+        <option value="USDC">USDC</option>
+    </select>
+    <button id="swap-exact-in">Swap Exact In</button>
+    <button id="swap-exact-out">Swap Exact Out (100 USDC)</button>
+    <p id="swap-output"></p>
+
+    <h2>Allowances</h2>
+    <select id="allowance-chain">
+        <option value="137">Polygon (137)</option>
+    </select>
+    <input id="allowance-amount" type="number" placeholder="Amount" value="1000000">
+    <button id="check-allowances">Check Allowances (USDC/USDT)</button>
+    <button id="set-allowance">Set Allowance</button>
+    <button id="revoke-allowance">Revoke USDC</button>
+    <p id="allowances-output"></p>
+
+    <h2>Intents</h2>
+    <button id="get-intents">Get My Intents (Chain 1)</button>
+    <p id="intents-output"></p>
+
+    <h2>Events & Utils</h2>
+    <button id="test-utils">Test Utils (Validate Address)</button>
+    <button id="provider-request">Request Accounts</button>
+    <button id="cleanup-btn">Cleanup</button>
+    <p id="events-output"></p>
+</div>
+<div id="log">Console logs will appear here...</div>
+</body>
+</html>
