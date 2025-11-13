@@ -1,3 +1,4 @@
+import './polyfills';
 import { NexusSDK } from '@avail-project/nexus-core';
 import { initNexusProvider } from './providers/nexus-provider';
 import { setupBalancesFeature } from './features/balances/balances-feature';
@@ -50,3 +51,4 @@ cleanupBtn.addEventListener('click', () => {
         logToUI('SDK cleaned up.');
     }
 });
+

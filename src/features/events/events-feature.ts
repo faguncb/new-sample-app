@@ -4,15 +4,18 @@ import { logToUI } from '../../utils/app-utils';
 export function setupEventsFeature(sdk: NexusSDK) {
     const eventsOutput = document.getElementById('events-output') as HTMLParagraphElement;
 
-    // Account/Chain change events
-    sdk.onAccountChanged((account) => {
-        logToUI(`Account changed: ${account}`);
-        eventsOutput.textContent += `\nAccount: ${account}`;
-    });
-    sdk.onChainChanged((chainId) => {
-        logToUI(`Chain changed: ${chainId}`);
-        eventsOutput.textContent += `\nChain: ${chainId}`;
-    });
+    // Account/Chain change events - listen to provider events directly
+    if (window.ethereum) {
+        window.ethereum.on('accountsChanged', (accounts: string[]) => {
+            const account = accounts[0];
+            logToUI(`Account changed: ${account}`);
+            eventsOutput.textContent += `\nAccount: ${account}`;
+        });
+        window.ethereum.on('chainChanged', (chainId: string) => {
+            logToUI(`Chain changed: ${chainId}`);
+            eventsOutput.textContent += `\nChain: ${chainId}`;
+        });
+    }
 
     // Progress events example (for bridge/execute)
     sdk.nexusEvents.on(NEXUS_EVENTS.EXPECTED_STEPS, (steps) => {
